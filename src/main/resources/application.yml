@@ -1,0 +1,25 @@
+server:
+  port: '8082'
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  application:
+    name: temperature-monitoring
+  datasource:
+    username: sa
+    url: jdbc:h2:file:~/algasensors-temperature-monitoring-db;CASE_INSENSITIVE_IDENTIFIERS=TRUE;
+    driverClassName: org.h2.Driver
+    #This password is only for tests. In real word, never set password here. Use a vault or secret instead.
+    password: '123'
+  h2:
+    console:
+      enabled: 'true'
+      settings.web-allow-others: 'true'
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      #Change to create-drop in case of changes in schema
+      ddl-auto: update
+    show-sql: 'true'
