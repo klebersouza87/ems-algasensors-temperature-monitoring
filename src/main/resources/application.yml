@@ -9,7 +9,8 @@ spring:
     name: temperature-monitoring
   datasource:
     username: sa
-    url: jdbc:h2:file:~/algasensors-temperature-monitoring-db;CASE_INSENSITIVE_IDENTIFIERS=TRUE;
+    #AUTO_SERVER allows multiple connections to the same database file
+    url: jdbc:h2:file:~/algasensors-temperature-monitoring-db;CASE_INSENSITIVE_IDENTIFIERS=TRUE;AUTO_SERVER=TRUE
     driverClassName: org.h2.Driver
     #This password is only for tests. In real word, never set password here. Use a vault or secret instead.
     password: '123'
@@ -28,3 +29,7 @@ spring:
     port: 5672
     username: rabbitmq
     password: rabbitmq
+    listener:
+      simple:
+        #process up to 4 messages concurrently
+        prefetch: 4
