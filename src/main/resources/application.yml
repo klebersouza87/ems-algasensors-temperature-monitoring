@@ -33,3 +33,9 @@ spring:
       simple:
         #process up to 4 messages concurrently
         prefetch: 4
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 10s
+          multiplier: 2
+          max-interval: 20s
